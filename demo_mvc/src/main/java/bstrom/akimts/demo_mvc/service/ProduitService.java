@@ -63,5 +63,20 @@ public class ProduitService {
         return new ArrayList<>(produits);
     }
 
+    public List<Produit> getByMarque(String marque){
+
+        List<Produit> primaryList  = getAll();
+        List<Produit> lastList = new ArrayList<>();
+
+        for(Produit tempList : primaryList) {
+            if (tempList.getMarque().equals(marque)){//.compareTo
+                lastList.add(tempList);
+            }
+        }
+
+        return lastList;
+
+    }
+
 
 }
