@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--    replace remplace la div par le header-->
+    <div th:replace="~{ fragments :: header }">
+    </div>
+
+    <h1 th:text="|Liste des produits (taille: ${liste_produit.size})|"></h1>
+
+    <div th:replace="~{ fragments :: #truc }">
+    </div>
+
+    <ul>
+        <li th:each="produit : ${liste_produit}" th:object="${produit}">
+            <p th:text="|marque: *{marque}|"></p>
+            <p th:text="|modele: *{modele}|"></p>
+            <p th:text="|prix: *{prix}|"></p>
+            <p><a th:href="@{/produit/{id}(id=*{id}, param1='param1')}">détails</a></p>
+        </li>
+    </ul>
+
+<!--    insert laissera la div et mettra le footer à l'interieur-->
+    <div th:insert="~{ fragments :: footer }">
+    </div>
+
+</body>
+</html>
