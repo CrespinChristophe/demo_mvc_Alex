@@ -4,10 +4,7 @@ import bstrom.akimts.demo_mvc.models.Produit;
 import bstrom.akimts.demo_mvc.service.ProduitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -34,6 +31,13 @@ public class ProduitController {
         List<Produit> list = service.getAll();
         model.addAttribute("liste_produit", list);
         return "displayAll";
+    }
+
+    @GetMapping("/marque")
+    public String displayByMarque(@RequestParam String marque, Model model){
+        List<Produit> list = service.getByMarque(marque);
+        model.addAttribute("liste_marque", list);
+        return "displayByMarque";
     }
 
     @ExceptionHandler(NoSuchElementException.class)

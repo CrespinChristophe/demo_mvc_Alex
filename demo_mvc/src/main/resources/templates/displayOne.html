@@ -15,6 +15,7 @@
         <p th:text="|modele: *{modele}|">BipBoup</p>
         <p th:text="*{enVente} ? 'disponible' : 'indisponible'"></p>
         <p th:text="|*{prix} euros|"></p>
+        <p><a th:href="@{/produit/{marque}(marque=*{marque}, param1='param1')}">Liste des produits de même marque</a></p>
     </th:block>
 
 

@@ -69,7 +69,7 @@ public class ProduitService {
         List<Produit> lastList = new ArrayList<>();
 
         for(Produit tempList : primaryList) {
-            if (tempList.getMarque().equals(marque)){//.compareTo
+            if (tempList.getMarque().equals(marque)){//.compareTo à voir
                 lastList.add(tempList);
             }
         }
