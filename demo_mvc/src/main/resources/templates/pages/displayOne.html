@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr" th:replace="~{/layout/layout :: layout(~{::toto},~{::css})}">
+
+<body>
+
+    <th:block th:fragment="css">
+
+    <link rel="stylesheet" href="../..static/css/specific.css" th:href="@{/css/specific.css}">
+
+    </th:block>
+
+    <th:block th:object="${produit}" th:fragment="toto">
+        <h1 th:text="| Produit d'id: *{id} |"> </h1>
+        <p th:text="|marque: *{marque}|">VrimVroom</p>
+        <p th:text="|modele: *{modele}|">BipBoup</p>
+        <p th:text="*{enVente} ? 'disponible' : 'indisponible'"></p>
+        <p th:text="|*{prix} euros|"></p>
+        <p><a th:href="@{/produit/marque(marque=*{marque})}">Liste des produits de même marque</a></p>
+
+        <p><a href="/produit">retour</a></p>
+    </th:block>
+
+
+
+</body>
+</html>

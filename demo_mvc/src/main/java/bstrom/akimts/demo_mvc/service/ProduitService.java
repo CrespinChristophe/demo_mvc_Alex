@@ -1,6 +1,7 @@
 package bstrom.akimts.demo_mvc.service;
 
 import bstrom.akimts.demo_mvc.models.Produit;
+import bstrom.akimts.demo_mvc.models.ProduitForm;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 public class ProduitService {
 
     private final List<Produit> produits;
+    private int nextId = 5;
 
     public ProduitService() {
 
@@ -75,6 +77,20 @@ public class ProduitService {
         }
 
         return lastList;
+
+    }
+
+    public Produit insert(ProduitForm form){
+        Produit produit = Produit.builder()
+                .id(nextId++)
+                .marque(form.getMarque())
+                .modele(form.getModele())
+                .prix(form.getPrix())
+                .enVente(true)
+                .build();
+
+        produits.add(produit);
+        return produit;
 
     }
 

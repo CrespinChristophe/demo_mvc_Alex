@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{/layout/layout :: layout(~{::content},_)}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,14 +7,13 @@
 <body>
 
 <!--    replace remplace la div par le header-->
-<div th:replace="~{ fragments :: header }">
+<div th:replace="~{ fragments/fragments :: header }">
 </div>
 
 <!-- <h1 th:text="|Liste des produits (taille: ${liste_produit.size})|"></h1> -->
 
-<div th:replace="~{ fragments :: #truc }">
-</div>
 
+<th:block th:fragment="content">
 <ul>
     <li th:each="produit : ${liste_marque}" th:object="${produit}">
         <p th:text="|marque: *{marque}|"></p>
@@ -23,9 +22,13 @@
 
     </li>
 </ul>
+    <p><a href="/produit">retour</a></p>
+</th:block>
+
+
 
 <!--    insert laissera la div et mettra le footer à l'interieur-->
-<div th:insert="~{ fragments :: footer }">
+<div th:insert="~{ fragments/fragments :: footer }">
 </div>
 
 </body>

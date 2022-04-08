@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" th:replace="~{/layout/layout :: layout(~{::content},_)}" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<th:block th:fragment="content">
+
+    <form action="#" th:action="@{/produit/add}" th:object="${produit}" method="post">
+
+        <div class="mb-3">
+            <label for="input-marque" class="form-label">Marque</label>
+            <input type="text" id="input-marque" class="form-control" th:field="*{marque}">
+            <p th:if="${ #fields.hasErrors('marque') }" th:errors="*{marque}">Il y a des erreurs</p>
+            <p th:unless="${ #fields.hasErrors('marque') }">Il n'y a pas d'erreurs</p>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="input-modele" class="form-label">Modele</label>
+            <input type="text" id="input-modele" class="form-control" th:field="*{modele}">
+            <p th:if="${ #fields.hasErrors('modele') }" th:errors="*{modele}">Il y a des erreurs</p>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="input-prix" class="form-label">Prix</label>
+            <input type="number" id="input-prix" class="form-control" th:field="*{prix}">
+            <p th:if="${ #fields.hasErrors('prix') }" th:errors="*{prix}">Il y a des erreurs</p>
+
+        </div>
+        <button type="submit" class="btn btn-info">SEND</button>
+
+    </form>
+
+    <a href="/produit">RETOUR A LA LISTE DES PRODUITS</a>
+
+</th:block>
+
+</html>
+

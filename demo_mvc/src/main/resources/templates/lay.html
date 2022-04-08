@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <th:block th:fragment="text_frag(title, content)">
+
+        <h1 th:text="${title}">Titre donné</h1>
+        <p>
+            Machin chouette
+        </p>
+
+        <div th:insert="${content}"><!-- pour avoir la valeur d'une variable c'est $ -->
+
+        </div>
+
+    </th:block>
+
+</html>
